@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import calendar from "./assets/calendar.svg";
 import check from "./assets/check.svg";
 import morning from "./assets/morning.svg";
@@ -5,6 +7,8 @@ import afternoon from "./assets/afternoon.svg";
 import night from "./assets/night.svg";
 
 function Schedule() {
+  const inputDateRef = useRef(null);
+
   return (
     <div className=" w-87.5 mx-auto mt-5 mb-10 text-content-primary">
       <section className="mb-8">
@@ -13,12 +17,21 @@ function Schedule() {
           Aqui você pode ver todos os clientes e serviços agendados para hoje.
         </p>
         <div className=" w-fit flex border text-content-secondary border-border-primary rounded-lg p-3 ">
-          <img src={calendar} alt="Ícone de calendário" className="mx-1" />
+          <img
+            onClick={() => inputDateRef.current.showPicker()}
+            src={calendar}
+            alt="Ícone de calendário"
+            className=" mr-3 cursor-pointer"
+          />
           <input
             type="date"
+            ref={inputDateRef}
             className="cursor-pointer outline-none [&::-webkit-calendar-picker-indicator]:hidden"
           />
-          <button className="cursor-pointer">
+          <button
+            className="cursor-pointer"
+            onClick={() => inputDateRef.current.showPicker()}
+          >
             <img src={check} alt="" />
           </button>
         </div>

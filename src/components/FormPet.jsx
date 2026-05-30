@@ -1,4 +1,7 @@
+import { useRef } from "react";
+
 import user from "../assets/user.svg";
+import check from "../assets/check.svg";
 import dog from "../assets/dog.svg";
 import phone from "../assets/phone.svg";
 import clock from "../assets/clock.svg";
@@ -10,6 +13,9 @@ function FormPet({ onClose }) {
     alert("Agendamento salvo com sucesso!");
     onClose();
   };
+
+  const inputDateRef = useRef(null);
+  const inputHourRef = useRef(null);
 
   return (
     <div className="font-inter-tight text-content-primary">
@@ -87,11 +93,23 @@ function FormPet({ onClose }) {
               Data
             </label>
             <div className="flex gap-3 border border-border-primary rounded-md p-2 mt-2 ">
-              <img src={calendar} alt="" />
+              <img
+                className="cursor-pointer"
+                src={calendar}
+                onClick={() => inputDateRef.current.showPicker()}
+                alt=""
+              />
               <input
+                ref={inputDateRef}
                 type="date"
                 required
-                className="outline-none border-none bg-transparent w-full text-content-secondary text-[14px]"
+                className="cursor-pointer [&::-webkit-calendar-picker-indicator]:hidden outline-none border-none bg-transparent w-full text-content-secondary text-[14px]"
+              />
+              <img
+                onClick={() => inputDateRef.current.showPicker()}
+                src={check}
+                alt=""
+                className="cursor-pointer"
               />
             </div>
           </div>
@@ -101,18 +119,35 @@ function FormPet({ onClose }) {
               Hora
             </label>
             <div className="flex gap-3 border border-border-primary rounded-md p-2 mt-2">
-              <img src={clock} alt="" />
+              <img
+                className="cursor-pointer"
+                onClick={() => inputHourRef.current.showPicker()}
+                src={clock}
+                alt=""
+              />
               <input
                 type="time"
+                ref={inputHourRef}
                 required
-                className="outline-none border-none bg-transparent w-full text-content-secondary text-[14px]"
+                className="cursor-pointer outline-none border-none bg-transparent w-full text-content-secondary text-[14px] [&::-webkit-calendar-picker-indicator]:hidden"
+              />
+              <img
+                onClick={() => inputHourRef.current.showPicker()}
+                src={check}
+                alt=""
+                className="cursor-pointer"
               />
             </div>
           </div>
         </div>
 
-        <div>
-          <button type="submit" className="bg-content-brand ">AGENDAR</button>
+        <div className="mt-6 flex justify-end-safe">
+          <button
+            type="submit"
+            className="bg-content-brand text-label-large text-black  py-2 px-5 rounded-lg cursor-pointer"
+          >
+            AGENDAR
+          </button>
         </div>
       </form>
     </div>
