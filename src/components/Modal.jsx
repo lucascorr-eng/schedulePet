@@ -8,7 +8,7 @@ function Modal({isOpen, onClose, children}) {
       <div className="relative w-full max-w-md p-6 shadow-2xl rounded-2xl bg-background-tertiary">
 
         <button onClick={onClose} className="absolute right-4 top-4 text-gray-400 hover:text-content-brand transition-colors flex items-center">
-          <img src={close} alt="ícone de fechar" className="w-4 h-4" />
+          <img src={close} alt="ícone de fechar" className="w-6 h-6" />
         </button>
 
         {children}
