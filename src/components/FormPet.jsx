@@ -23,55 +23,96 @@ function FormPet({ onClose }) {
           <label htmlFor="" className="text-label-medium">
             Nome do tutor
           </label>
-          <div className="flex gap-2 border rounded-md p-2 mt-2">
+          <div className="flex gap-2 border border-border-primary rounded-md p-2 mt-2">
             <img src={user} alt="" />
-            <input type="text" placeholder="Caio Rodrigues" className="" />
+            <input
+              type="text"
+              required
+              placeholder="Caio Rodrigues"
+              className="font-inter font-normal text-[14px] outline-none border-none bg-transparent w-full  text-content-secondary"
+            />
           </div>
         </div>
 
-        <div>
-          <label htmlFor="">Nome do pet</label>
-          <div>
+        <div className="mt-4">
+          <label htmlFor="" className="text-label-medium">
+            Nome do pet
+          </label>
+          <div className="flex gap-2 border border-border-primary rounded-md p-2 mt-2">
             <img src={dog} alt="" />
-            <input type="text" placeholder="Rex" />
+            <input
+              type="text"
+              required
+              className="font-inter font-normal text-[14px] outline-none border-none bg-transparent w-full  text-content-secondary"
+              placeholder="Rex"
+            />
           </div>
         </div>
 
-        <div>
-          <label htmlFor="">Telefone</label>
-          <div>
+        <div className="mt-4">
+          <label htmlFor="" className="text-label-medium">
+            Telefone
+          </label>
+          <div className="flex gap-2 border border-border-primary rounded-md p-2 mt-2">
             <img src={phone} alt="" />
-            <input type="tel" placeholder="(00) 00000-0000" />
+            <input
+              type="tel"
+              required
+              className="font-inter font-normal text-[14px] outline-none border-none bg-transparent w-full  text-content-secondary"
+              placeholder="(00) 00000-0000"
+            />
           </div>
         </div>
 
-        <div>
-          <label htmlFor=""> Descrição do serviço</label>
-          <div>
-            <input type="text" />
+        <div className="mt-4">
+          <label htmlFor="" className="text-label-medium">
+            {" "}
+            Descrição do serviço
+          </label>
+          <div className="flex gap-2 border border-border-primary rounded-md p-2 mt-2">
+            <textarea
+              type="text"
+              rows="4"
+              required
+              className="font-inter font-normal text-[14px]
+               outline-none resize-none border-none bg-transparent w-full text-content-secondary"
+              placeholder="Banho e tosa"
+            />
           </div>
         </div>
 
-        <div>
+        <div className="mt-4">
           <div>
-            <label htmlFor="">Data</label>
-            <div>
+            <label htmlFor="" className="text-label-medium">
+              Data
+            </label>
+            <div className="flex gap-3 border border-border-primary rounded-md p-2 mt-2 ">
               <img src={calendar} alt="" />
-              <input type="date" />
+              <input
+                type="date"
+                required
+                className="outline-none border-none bg-transparent w-full text-content-secondary text-[14px]"
+              />
             </div>
           </div>
 
-          <div>
-            <label htmlFor="">Hora</label>
-            <div>
+          <div className="mt-4">
+            <label htmlFor="" className="text-label-medium">
+              Hora
+            </label>
+            <div className="flex gap-3 border border-border-primary rounded-md p-2 mt-2">
               <img src={clock} alt="" />
-              <input type="time" />
+              <input
+                type="time"
+                required
+                className="outline-none border-none bg-transparent w-full text-content-secondary text-[14px]"
+              />
             </div>
           </div>
         </div>
 
         <div>
-          <button type="submit">AGENDAR</button>
+          <button type="submit" className="bg-content-brand ">AGENDAR</button>
         </div>
       </form>
     </div>
