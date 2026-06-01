@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useRef } from "react";
 
 import user from "../assets/user.svg";
@@ -8,8 +9,28 @@ import clock from "../assets/clock.svg";
 import calendar from "../assets/calendar.svg";
 
 function FormPet({ onClose }) {
+  const [formData, setFormData] = useState({
+    nameTutor: "",
+    namePet: "",
+    phone: "",
+    description: "",
+    date: "",
+    hour: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((previousState) => ({
+      ...previousState,
+      [name]: value,
+    }));
+  };
+
   const saveSchedule = (e) => {
     e.preventDefault();
+
+    console.log("DADOS PRONTO PARA O ENVIO:", formData);
+
     alert("Agendamento salvo com sucesso!");
     onClose();
   };
@@ -33,6 +54,9 @@ function FormPet({ onClose }) {
             <img src={user} alt="" />
             <input
               type="text"
+              name="nameTutor"
+              value={formData.nameTutor}
+              onChange={handleChange}
               required
               placeholder="Caio Rodrigues"
               className="font-inter font-normal text-[14px] outline-none border-none bg-transparent w-full  text-content-secondary"
@@ -48,6 +72,9 @@ function FormPet({ onClose }) {
             <img src={dog} alt="" />
             <input
               type="text"
+              name="namePet"
+              value={formData.namePet}
+              onChange={handleChange}
               required
               className="font-inter font-normal text-[14px] outline-none border-none bg-transparent w-full  text-content-secondary"
               placeholder="Rex"
@@ -63,6 +90,9 @@ function FormPet({ onClose }) {
             <img src={phone} alt="" />
             <input
               type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               required
               className="font-inter font-normal text-[14px] outline-none border-none bg-transparent w-full  text-content-secondary"
               placeholder="(00) 00000-0000"
@@ -77,6 +107,9 @@ function FormPet({ onClose }) {
           </label>
           <div className="flex gap-2 border border-border-primary rounded-md p-2 mt-2">
             <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
               type="text"
               rows="4"
               required
@@ -102,6 +135,9 @@ function FormPet({ onClose }) {
               <input
                 ref={inputDateRef}
                 type="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
                 required
                 className="cursor-pointer [&::-webkit-calendar-picker-indicator]:hidden outline-none border-none bg-transparent w-full text-content-secondary text-[14px]"
               />
@@ -127,6 +163,9 @@ function FormPet({ onClose }) {
               />
               <input
                 type="time"
+                name="hour"
+                value={formData.hour}
+                onChange={handleChange}
                 ref={inputHourRef}
                 required
                 className="cursor-pointer outline-none border-none bg-transparent w-full text-content-secondary text-[14px] [&::-webkit-calendar-picker-indicator]:hidden"
